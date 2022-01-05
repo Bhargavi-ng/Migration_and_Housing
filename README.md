@@ -23,7 +23,7 @@ We think population migration has wide ranging implications for the U.S populati
 - What are some other implications of population migration (e.g. overall cost of living, congressional redistricting)?
 
 ## Machine Learning Model
-For this analysis, we will use linear regression machine learning (ML) model. The linear regression model will regress percentage house price changes for counties in the US over 2015-19 against population change in those countries. The linear regression model tests the null hypothesis that population growth drives up real estate prices. The ML model will take data from the provisional database as noted below. We will assess Accuracy, Precision, and Sensitivity of the model. 
+For this analysis, we will use linear regression machine learning (ML) model. The linear regression model will regress percentage house price changes for counties in the US over 2015-19 against population change in those countries during the same period. The linear regression model tests the null hypothesis that population growth drives up real estate prices. The ML model will take data from the provisional database as noted below. We will assess Accuracy, Precision, and Sensitivity of the model. 
 
 
 ## Database Integration
@@ -35,3 +35,11 @@ The following is a screenshot of mock data in the database:
 
 
 ## Communication Protocol
+The group will communicate and keep each other posted using Slack channel for Group 3 and Zoom. 
+
+- Link to [Group 3's Slack Channel](https://ucbvirtdatapt-puq6469.slack.com/archives/C02RWJSSP53)
+- Link to Zoom call is in Slack channel. 
+- Team members will work on 3 separate GitHub branches.
+
+
+## Tech Used and Team Roles
