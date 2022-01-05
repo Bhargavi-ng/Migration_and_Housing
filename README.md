@@ -27,7 +27,11 @@ For this analysis, we will use linear regression machine learning (ML) model. Th
 
 
 ## Database Integration
-Team members will be expected to present a provisional database that stands in for the final database and accomplishes the following:
+We created a provisional PostgreSQL database in AWS RDS that stands in for the final database. The database will static data such as the FHFA HPI for each county and population migration by county. Draft machine learning model is connected to the provisional database. 
 
-Sample data that mimics the expected final database structure or schema
-Draft machine learning model is connected to the provisional database
+The following is a screenshot of the schema we used for the analysis:
+
+The following is a screenshot of mock data in the database:
+
+
+## Communication Protocol
