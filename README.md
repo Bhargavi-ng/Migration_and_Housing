@@ -29,9 +29,11 @@ For this analysis, we will use linear regression machine learning (ML) model. Th
 ## Database Integration
 We created a provisional PostgreSQL database in AWS RDS that stands in for the final database. The database will static data such as the FHFA HPI for each county and population migration by county. Draft machine learning model is connected to the provisional database. 
 
-The following is a screenshot of the schema we used for the analysis:
+The following is a screenshot of the entity relations diagram (ERD) we used for the analysis:
 
-The following is a screenshot of mock data in the database:
+![ERD_PreliminaryDraft](/Resources/ERD_PreliminaryDraft.png)
+
+The following is the link for the schema used in the database: [Database schema](https://raw.githubusercontent.com/hishamdewan/Migration_and_Housing/main/Resources/create_tables_sql)
 
 
 ## Communication Protocol
@@ -61,17 +63,16 @@ The group will communicate and keep each other posted using Slack channel for Gr
 6. Merina Kansakar
 
 ### Team Roles for First Segement of the Project:
-Square Role: Hisham Dewan
-Triangle Role: Teruki Ito, Zhen Fung
-Circle Role: Shirley Liu, Merina Kansakar
-X Role: Bhargavi Nagarajappa
+- Square Role: Hisham Dewan
+- Triangle Role: Teruki Ito, Zhen Fung
+- Circle Role: Shirley Liu, Merina Kansakar
+- X Role: Bhargavi Nagarajappa
 
 ### Team Roles for Second Segement of the Project:
-Square Role: 
-Triangle Role: 
-Circle Role: 
-X Role: 
-
+- Square Role: 
+- Triangle Role: 
+- Circle Role: 
+- X Role: 
 
 
 
