@@ -36,6 +36,10 @@ Process [House Price Index for all counties](https://github.com/hishamdewan/Migr
 - Create columns for population change and real estate price change.
 - Export a CSV file with cleaned house price data.
 
+New CSV file after clean up can be found here [Cleaned data - House Price Index for all counties](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/house_price_df.csv).
+
+Code for the above clean up can be found here [Jupyter Notebook - House Price Index Data Clean Up](https://github.com/hishamdewan/Migration_and_Housing/blob/main/House_Price.ipynb).
+
 Process [County-to-County Migration Flows 2015-2019 ACS data](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/Net_Gross_US.txt) 
 - Remove unnecessary columns in the migration data. 
 - Create pivot table showing population change absolute migration by county and as % of total population. 
@@ -46,8 +50,10 @@ Linear regression model
 - Create a scatter plot of percentage house price changes vs migration change 
 - Create a model regresses percentage house price changes vs migration change in those countries during the same period.
 - Evaluate the model using R Squared and other metrics.
+  
+  The Code for the above can be found here [Jupyter Notebook - Linear Regression for house price and migration](https://github.com/hishamdewan/Migration_and_Housing/blob/main/linear_regression_HPI_vs_pop.ipynb)
 
-2) We will use a second linear regression model that will regress "All-Transactions House Price Index for the United States" on "30-Year Fixed Rate Mortgage Average in the United States" between 2000-2021. This model will tests the hypothesis that falling interest rates drives up housing prices in the U.S. We will assess the quality of the model using R squared and other metrics. 
+1) We will use a second linear regression model that will regress "All-Transactions House Price Index for the United States" on "30-Year Fixed Rate Mortgage Average in the United States" between 2000-2021. This model will tests the hypothesis that falling interest rates drives up housing prices in the U.S. We will assess the quality of the model using R squared and other metrics. 
 
 ## Database Integration
 We created a provisional PostgreSQL database in AWS RDS that stands in for the final database. The database will static data such as the FHFA HPI for each county and population migration by county. Draft machine learning model is connected to the provisional database. 
@@ -93,7 +99,7 @@ The group will communicate and keep each other posted using Slack channel for Gr
 
 ### Team Roles for Second Segement of the Project:
 - Square Role: 
-- Triangle Role: 
+- Triangle Role:
 - Circle Role: 
 - X Role: 
 
