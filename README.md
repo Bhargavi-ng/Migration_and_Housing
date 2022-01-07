@@ -10,7 +10,7 @@ We think population migration has wide ranging implications for the U.S populati
 - The American Community Survey (ACS) done by the U.S. Census provides data on changes taking place in population and housing in the U.S. We are using county to county migration data from ACS during 2015-19. [County-to-County Migration Flows: 2015-2019 ACS](https://www.census.gov/data/tables/2019/demo/geographic-mobility/county-to-county-migration-2015-2019.html). 
 	- The raw data is in this [text file](Resources/Net_Gross_US.txt)
 - Estimated total population by county over 2010-19 from the US Census: [Total population by county 2010-19](https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/counties/totals/co-est2019-alldata.csv)
-	- The raw data is in this [csv file](County_population_totals_2010_2019_co-est2019-alldata.csv)
+	- The raw data is in this [csv file](Resources/County_population_totals_2010_2019_co-est2019-alldata.csv)
 - Federal Housing Finance Agency (FHFA) House Price Index (HPI) is a broad measure of the movement of single-family house prices. The FHFA HPI is a weighted, repeat-sales index, meaning that it measures average price changes in repeat sales or refinancings on the same properties. FHFA provides HPI for all counties in the U.S. [FHFA HPI data from US Federal Reserve](https://geofred.stlouisfed.org/map/?th=ylgn&cc=5&rc=false&im=fractile&sb&lng=-100.239&lat=41.558&zm=5&sl&sv&sti=942&rt=county&at=Not%20Seasonally%20Adjusted,%20Annual,%20Index%202000%3D100,%20no_period_desc&fq=Annual&dt=2020-01-01&am=Average&un=lin) 
 	- The raw data is in this [Excel file](Resources/GeoFRED_All-Transactions_House_Price_Index_by_County_Index.xlsx)
 - Interest rate data: [30-Year Fixed Rate Mortgage Average in the United States](https://fred.stlouisfed.org/series/MORTGAGE30US)
@@ -31,7 +31,7 @@ We think population migration has wide ranging implications for the U.S populati
 ## Machine Learning Model
 We will use two machine learning model for this analysis:
 
-1) A linear regression model will regress percentage house price changes for counties in the US over 2015-19 against population change in those countries during the same period. The linear regression model tests the null hypothesis that population growth drives up real estate prices. The ML model will take data from the provisional database as noted below. We will assess the quality of the model using R squared  and other metrics. 
+1) A linear regression model will regress percentage house price changes for counties in the US over 2015-19 against population change in those countries during the same period. The linear regression model tests the null hypothesis that population growth drives up real estate prices. The ML model will take data from the provisional database as noted below. We will assess the quality of the model using R squared  and other metrics. We will take the following steps for the linear regression model:
 
 **Processing [House Price Index for all counties](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/GeoFRED_All-Transactions_House_Price_Index_by_County_Index.xlsx):**
 
@@ -39,9 +39,11 @@ We will use two machine learning model for this analysis:
 - Create columns for population change and real estate price change.
 - Export a CSV file with cleaned house price data.
 
-    New CSV file [Cleaned data - House Price Index for all counties](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/house_price_df.csv).
 
-    Code base [Jupyter Notebook - House Price Index Data Clean Up](https://github.com/hishamdewan/Migration_and_Housing/blob/main/House_Price.ipynb).
+   New CSV file [Cleaned data - House Price Index for all counties](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/house_price_df.csv).
+
+   Code base [Jupyter Notebook - House Price Index Data Clean Up](https://github.com/hishamdewan/Migration_and_Housing/blob/main/House_Price.ipynb).
+
 
 The following is screenshot show a list of states that had counties that saw >40% housing price (i.e. HPI) increase over 2015-19
 
@@ -53,17 +55,17 @@ The following is screenshot show a list of states that had counties that saw >40
 - Create pivot table showing population change (i.e. number of people migrating and as % of total population).
 - Create two CSV files: one for ML model and the other to store in the database.
 
-    New CSV file: [Cleaned data - County Level Migration as % of total population](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/county_level_migration_15-19.csv).
+   New CSV file: [Cleaned data - County Level Migration as % of total population](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/county_level_migration_15-19.csv).
 
-    Code base [Jupyter Notebook - Migration Flows Data Clean Up](https://github.com/hishamdewan/Migration_and_Housing/blob/main/population_change.ipynb).
+   Code base [Jupyter Notebook - Migration Flows Data Clean Up](https://github.com/hishamdewan/Migration_and_Housing/blob/main/population_change.ipynb).
 
 The screenshot of a pivot table shows population change by state and county:
 
 ![pivot_table_migration_by_state_county](Images/pivot_table_migration_by_state_county.png)
 
-    New CSV file: [Cleaned data - County Level Migration by number of people and source county](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/cleaned-county-to-county-2015-2019-ins-outs-nets-gross.csv).
+   New CSV file: [Cleaned data - County Level Migration by number of people and source county](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/cleaned-county-to-county-2015-2019-ins-outs-nets-gross.csv).
 
-    Code base [Jupyter Notebook - Migration Flows by County](https://github.com/hishamdewan/Migration_and_Housing/blob/main/cleaning_excel_file.ipynb).
+   Code base [Jupyter Notebook - Migration Flows by County](https://github.com/hishamdewan/Migration_and_Housing/blob/main/cleaning_excel_file.ipynb).
 
 **Linear regression model**
 
@@ -72,7 +74,7 @@ The screenshot of a pivot table shows population change by state and county:
 - Create a model that regresses percentage house price changes vs migration change in those countries during the same period.
 - Evaluate the model using R Squared and other metrics.
   
-    Code base [Jupyter Notebook - Linear Regression for house price and migration](https://github.com/hishamdewan/Migration_and_Housing/blob/main/linear_regression_HPI_vs_pop.ipynb).
+   Code base [Jupyter Notebook - Linear Regression model regressing house price and migration](https://github.com/hishamdewan/Migration_and_Housing/blob/main/linear_regression_HPI_vs_pop.ipynb).
 
 2) We will use a second linear regression model that will regress "**All-Transactions House Price Index for the United States**" on "**30-Year Fixed Rate Mortgage Average in the United States**" between 2000-2021. This model will tests the hypothesis that falling interest rates drives up housing prices in the U.S. We will assess the quality of the model using R squared and other metrics. 
 
@@ -96,7 +98,7 @@ The following is a screenshot of IN_OUTS_NETS_GROSS data table that stores proce
 The group will communicate and keep each other posted using Slack channel for Group 3 and Zoom. 
 
 - Link to [Group 3's Slack Channel](https://ucbvirtdatapt-puq6469.slack.com/archives/C02RWJSSP53)
-- Link to Zoom call is in Slack channel. We will meet during class hours on Tuesday and Thursday 7pm PST.
+- Link to Zoom is in the Slack channel. We will meet during class hours on Tuesday and Thursday 7pm PST.
 - Team members will work on 3 separate GitHub branches and inform the group of commits and progress of their work.
 - Once all members have completed their weekly task, the person with the "Square Role" (defined below) will merge the branches.  
 
