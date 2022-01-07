@@ -44,6 +44,10 @@ Process [County-to-County Migration Flows 2015-2019 ACS data](https://github.com
 - Remove unnecessary columns in the migration data. 
 - Create pivot table showing population change absolute migration by county and as % of total population. 
 
+New CSV file after clean up can be found here [Cleaned data - County Level Migration](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/county_level_migration_15-19.csv).
+
+Code for the above clean up can be found here [Jupyter Notebook - Migration Flows Data Clean Up](https://github.com/hishamdewan/Migration_and_Housing/blob/main/population_change.ipynb).
+
 Linear regression model
 
 - Establish a connection to the following database using SQLAlchemy.
