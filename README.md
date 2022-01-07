@@ -1,6 +1,6 @@
 # Impact of Migration on Housing Prices
 ## Selected Topic
-Purposes of the project is to gauge the impact of in-country population migration in the U.S. on house prices. We will identify population migration patters in the U.S. using various visualization. General hypothesis is population growth drives up real estate prices (and vice versa). 
+Purposes of the project is to gauge the impact of in-country population migration in the U.S. on house prices. We will identify population migration patterns in the U.S. using various visualization. General hypothesis is that population growth drives up real estate prices (and vice versa). 
 
 ### Underlying reason
 We think population migration has wide ranging implications for the U.S population including economic, political, demographic and societal impact. Population migration could impact economic growth, cost of living, real estate prices, transportation, congressional redistricting, government budgets, demographic makeup, etc. In this analysis, we will show population migration patterns in the U.S. and how that has impacted housing prices.
@@ -36,9 +36,17 @@ Process [House Price Index for all counties](https://github.com/hishamdewan/Migr
 - Create columns for population change and real estate price change.
 - Export a CSV file with cleaned house price data.
 
+    New CSV file [Cleaned data - House Price Index for all counties](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/house_price_df.csv).
+
+    Code base [Jupyter Notebook - House Price Index Data Clean Up](https://github.com/hishamdewan/Migration_and_Housing/blob/main/House_Price.ipynb).
+
 Process [County-to-County Migration Flows 2015-2019 ACS data](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/Net_Gross_US.txt) 
 - Remove unnecessary columns in the migration data. 
 - Create pivot table showing population change absolute migration by county and as % of total population. 
+
+    New CSV file [Cleaned data - County Level Migration](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/county_level_migration_15-19.csv).
+
+    Code base [Jupyter Notebook - Migration Flows Data Clean Up](https://github.com/hishamdewan/Migration_and_Housing/blob/main/population_change.ipynb).
 
 Linear regression model
 
@@ -46,11 +54,14 @@ Linear regression model
 - Create a scatter plot of percentage house price changes vs migration change 
 - Create a model regresses percentage house price changes vs migration change in those countries during the same period.
 - Evaluate the model using R Squared and other metrics.
+  
+  Code base [Jupyter Notebook - Linear Regression for house price and migration](https://github.com/hishamdewan/Migration_and_Housing/blob/main/linear_regression_HPI_vs_pop.ipynb)
+
 
 2) We will use a second linear regression model that will regress "All-Transactions House Price Index for the United States" on "30-Year Fixed Rate Mortgage Average in the United States" between 2000-2021. This model will tests the hypothesis that falling interest rates drives up housing prices in the U.S. We will assess the quality of the model using R squared and other metrics. 
 
 ## Database Integration
-We created a provisional PostgreSQL database in AWS RDS that stands in for the final database. The database will static data such as the FHFA HPI for each county and population migration by county. Draft machine learning model is connected to the provisional database. 
+We created a provisional PostgreSQL database in AWS RDS that stands in for the final database. The database will house static data such as the FHFA HPI for each county and population migration by county. Draft machine learning model is connected to the provisional database. 
 
 The following is a screenshot of the entity relations diagram (ERD) we used for the analysis:
 
@@ -71,6 +82,7 @@ The group will communicate and keep each other posted using Slack channel for Gr
 - Data Sources: 
     - US Census migration data: [County-to-County Migration Flows: 2015-2019 ACS (census.gov)](https://www.census.gov/data/tables/2019/demo/geographic-mobility/county-to-county-migration-2015-2019.html)
     - Various real estate price indices (e.g. US FHA Price Index, Zillow home price index, US CPI specific for real estate, etc.) : [Search Results | FRED | St. Louis Fed (stlouisfed.org)](https://fred.stlouisfed.org/searchresults/?st=All-Transactions%20House%20Price%20Index&t=county&ob=sr&od=desc&types=gen;geot)
+  
 
 - Data Clean up: Jupyter Notebook, Python, Pandas Library
 - Database: PostgresSQL, Amazon Relational Database Service
@@ -93,7 +105,7 @@ The group will communicate and keep each other posted using Slack channel for Gr
 
 ### Team Roles for Second Segement of the Project:
 - Square Role: 
-- Triangle Role: 
+- Triangle Role:
 - Circle Role: 
 - X Role: 
 
