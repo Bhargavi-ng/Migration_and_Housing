@@ -43,3 +43,38 @@ The group will communicate and keep each other posted using Slack channel for Gr
 
 
 ## Tech Used and Team Roles
+- Data Sources: 
+    - US Census migration data: [County-to-County Migration Flows: 2015-2019 ACS (census.gov)](https://www.census.gov/data/tables/2019/demo/geographic-mobility/county-to-county-migration-2015-2019.html)
+    - Various real estate price indices (e.g. US FHA Price Index, Zillow home price index, US CPI specific for real estate, etc.) : [Search Results | FRED | St. Louis Fed (stlouisfed.org)](https://fred.stlouisfed.org/searchresults/?st=All-Transactions%20House%20Price%20Index&t=county&ob=sr&od=desc&types=gen;geot)
+
+- Data Clean up: Jupyter Notebook, Python, Pandas Library
+- Database: PostgresSQL, Amazon Relational Database Service
+- Data Visualization: Tableau
+
+
+### Team Members
+1. Hisham Dewan
+2. Shirley Liu
+3. Zhen Fung
+4. Bhargavi Nagarajappa
+5. Teruki Ito
+6. Merina Kansakar
+
+### Team Roles for First Segement of the Project:
+Square Role: Hisham Dewan
+Triangle Role: Teruki Ito, Zhen Fung
+Circle Role: Shirley Liu, Merina Kansakar
+X Role: Bhargavi Nagarajappa
+
+### Team Roles for Second Segement of the Project:
+Square Role: 
+Triangle Role: 
+Circle Role: 
+X Role: 
+
+
+
+
+
+
+
