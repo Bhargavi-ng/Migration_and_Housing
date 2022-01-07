@@ -1,6 +1,6 @@
 # Impact of Migration on Housing Prices
 ## Selected Topic
-Purposes of the project is to gauge the impact of in-country population migration in the U.S. on house prices. General hypothesis is population growth drives up real estate prices (and vice versa). 
+Purposes of the project is to gauge the impact of in-country population migration in the U.S. on house prices. We will identify population migration patters in the U.S. using various visualization. General hypothesis is population growth drives up real estate prices (and vice versa). 
 
 ### Underlying reason
 We think population migration has wide ranging implications for the U.S population including economic, political, demographic and societal impact. Population migration could impact economic growth, cost of living, real estate prices, transportation, congressional redistricting, government budgets, demographic makeup, etc. In this analysis, we will show population migration patterns in the U.S. and how that has impacted housing prices.
