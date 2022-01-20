@@ -76,23 +76,100 @@ The screenshot of a pivot table shows population change by state and county:
   
    Code base [Jupyter Notebook - Linear Regression model regressing house price and migration](https://github.com/hishamdewan/Migration_and_Housing/blob/main/linear_regression_HPI_vs_pop.ipynb).
 
-2) We will use a second linear regression model that will regress "**All-Transactions House Price Index for the United States**" on "**30-Year Fixed Rate Mortgage Average in the United States**" between 2000-2021. This model will tests the hypothesis that falling interest rates drives up housing prices in the U.S. We will assess the quality of the model using R squared and other metrics. 
+**Output**
+
+
+
+2) We used a second linear regression model that will regress "**All-Transactions House Price Index for the United States**" on "**30-Year Fixed Rate Mortgage Average in the United States**" between 2000-2021. This model tests the hypothesis that falling interest rates drives up housing prices in the U.S. We assessed the quality of the model using R squared and other metrics. 
+
+**Findings**
+The model supports our hypothesis that falling interest rate drives up the housing prices in U.S. as shown below. This model has a R squared value of 68.5% meaning that falling interest rates explains 68.5% of the cases of increased House Prices. There are other factors influencing the remaining 31.5% of the cases of increased House prices.
+![Linear Regression Plot](/Images/linear_regression_HPI_vs_MORTGAGE.png)
+
+**Processing**
+
+
+
+**Training and Testing sets**
+We used SKlearn to split the above processed data into training and testing sets as shown below screenshot.
+![HPI vs Mortgage splitting Datasets for Training and Testing](/Images/HPI_Mortgage_Split_Datasets.PNG)
+
+**Model Quality**
+This model has a mean squared error value of 3.64. A perfect model will have the value "0". 3.64 is relatively small and thus, we can conclude the quality of the model is relatively good. 
+![HPI vs Mortgage Model Quality Evaluation](/Images/HPI_Mortgage_Model_Quality.PNG)
+
+Code base [Jupyter Notebook - Linear Regression model regressing House price and Mortgage rate](https://github.com/hishamdewan/Migration_and_Housing/blob/main/linear_regression_HPI_vs_30MORTGAGE.ipynb)
+
+## Neural
+
+
 
 ## Database Integration
-We created a provisional PostgreSQL database in AWS RDS that stands in for the final database. The database will house static data such as the FHFA HPI for each county and population migration by county. Draft machine learning model will be connected to the provisional database. 
+PostgreSQL database in AWS RDS is used to store data used for this project. The static data from FHFA HPI for each county and population migration by county were data preprocessing and loaded into Postgres AWS database in AWS RDS. Those two data sources with merged in AWS using SQL and prepared to be consumed for various Machine Learning models.
 
 The following is a screenshot of the entity relations diagram (ERD) we used for the analysis:
+![ERD DIAGRAM](/Images/RD.png)
 
-![ERD](/Images/ERD.png)
+For the security purposes, sensitive information needed to connect to AWS RDS is saved on config.py file and called in following files to upload and download data.
+* Migration_data_upload.ipynb
+* loading_house_price_data_to_RDS.ipynb
+* linear_regression_HPI_vs_pop.ipynb
 
-The following is the link for the schema used in the database: [Database schema](https://github.com/hishamdewan/Migration_and_Housing/blob/main/DB_Schema.sql)
+The following is a screenshot of MIGRATIONS_IN_OUTS_NETS_GROSS data table that stores processed
+County-to-County Migration Flows 2015-2019 ACS data in the database:
+![MIGRATIONS_IN_OUTS_NETS_GROSS table](/Images/MIGRATION_IN_OUTS_NETS_GROSS_data_table.png)
 
-The following is a screenshot of HOUSE_PRICE data table that stores processed House Price Index for all counties in the database:
-![HOUSE_PRICE_data_table](/Images/HOUSE_PRICE_data_table.png)
+The following is a screenshot of HOUSE_PRICE data table that stores processed FHFA HPI for each county in the database:
+![MIGRATIONS_IN_OUTS_NETS_GROSS table](/Images/HOUSE_PRICE_data_table.png)
+
+Below is the SQL used to join MIGRATIONS_IN_OUTS_NETS_GROSS and HOUSE_PRICE.
+```
+SELECT
+	 B.state_name_of_geography_a,
+    B.county_name_of_geography_a,
+    B.state_and_county_of_geography_a,
+    A.REGION_CODE AS REGION_CODE_geography_a,
+    B.state_us_island_area_foreign_region_of_geography_b,
+    B.county_name_of_geography_b,
+    B.state_and_county_of_geography_b,
+    B.flow_from_geography_b_to_geography_a,
+    B.counterflow_from_geography_a_to_geography_b, 
+    B.net_migration_from_geography_b_to_geography_a1,
+    B.gross_migration_between_geography_a_and_geography_b1,
+    A."2000" ,A."2001" ,A."2002" ,A."2003" ,A."2004" ,A."2005",
+    A."2006" ,A."2007" ,A."2008" ,A."2009",A."2010" ,A."2011",
+    A."2012",A."2013" ,A."2014" ,A."2015" ,A."2016",A."2017",
+    A."2018",A."2019" ,A."2020",
+    A.percent_price_change_2015_19
+INTO house_price_migration_in_out
+FROM house_price A
+INNER JOIN migration_in_outs_nets_gross B
+	ON A.state_and_county = B.state_and_county_of_geography_a;
+```
+
+The data from house_price_migration_in_out is utilized to run Linear Regression on house price and migration.
 
 
-The following is a screenshot of IN_OUTS_NETS_GROSS data table that stores processed County-to-County Migration Flows 2015-2019 ACS data in the database:
-![IN_OUTS_NETS_GROSS_data_table](/Images/IN_OUTS_NETS_GROSS_data_table.png)
+
+
+
+
+
+
+## Dashboard
+We are using Tableau to create the graphs and charts necessary for visualization. The ""Dashboard" and "Story" features of the Tableau will help us with story telling when the time comes for the presentation.
+
+The interactive elements we used for creation of graphs and charts are
+- Population migration within U.S.A
+  - County level
+  - State level
+- House Price Index
+- Population growth
+- Mortgage Rate of Interest
+
+
+### Presentation
+The outline for the presentation has been created as part of Segement2 Deliverable. Here is the [link](https://docs.google.com/presentation/d/1ZMPZ4rW7OaxI3ja43FWr-0ZHVNi6gMHT/edit#slide=id.p1)
 
 ## Communication Protocol
 The group will communicate and keep each other posted using Slack channel for Group 3 and Zoom. 
@@ -103,7 +180,7 @@ The group will communicate and keep each other posted using Slack channel for Gr
 - Once all members have completed their weekly task, the person with the "Square Role" (defined below) will merge the branches.  
 
 ## Tech Used and Team Roles
-- Data Clean up: Jupyter Notebook, Python, Pandas Library, Mito
+- Data Clean up: Jupyter Notebook, Python, Pandas Library, Mito, SQLAlchemy
 - Database: PostgresSQL, Amazon Relational Database Service
 - Data Visualization: Tableau
 
@@ -122,7 +199,13 @@ The group will communicate and keep each other posted using Slack channel for Gr
 - X Role (Technology): Bhargavi Nagarajappa
 
 ### Team Roles for Second Segement of the Project:
-- Square Role: Bhargavi Nagarajappa
-- Triangle Role: Shirley Liu, Merina Kansakar
-- Circle Role: Teruki Ito, Hisham Dewan
-- X Role: Zhen Fung
+- Square Role : Bhargavi Nagarajappa
+- Triangle Role : Shirley Liu, Hisham Dewan
+- Circle Role : Teruki Ito, Merina Kansakar
+- X Role : Zhen Fung, Hisham Dewan
+
+### Team Roles for Third Segement of the Project:
+- Square Role : 
+- Triangle Role : 
+- Circle Role : 
+- X Role : 
