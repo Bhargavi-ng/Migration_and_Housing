@@ -60,31 +60,32 @@ The screenshot of a pivot table shows population change by state and county:
 
 ![pivot_table_migration_by_state_county](Images/pivot_table_migration_by_state_county.png)
     
-  
 
-1. **Net Migration** Data from [County-to-County Migration Flows 2015-2019 Ins-Outs-Nets-Gross (Excel file)](\Resources\cleaned-county-to-county-2015-2019-ins-outs-nets-gross.xlsx) was transformed as below and output file in CSV format [Cleaned data - County Level Migration by number of people and source county](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/cleaned-county-to-county-2015-2019-ins-outs-nets-gross.csv) was generated.
+3. **Net Migration** Data from [County-to-County Migration Flows 2015-2019 Ins-Outs-Nets-Gross (Excel file)](\Resources\cleaned-county-to-county-2015-2019-ins-outs-nets-gross.xlsx) was transformed as below and output file in CSV format [Cleaned data - County Level Migration by number of people and source county](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/cleaned-county-to-county-2015-2019-ins-outs-nets-gross.csv) was generated.
   
-  - Removed unnecessary columns in the migration data,
-  - Renamed and Reordered the columns to user friendly names, and
-  - Generated new file in csv format.
+	  - Removed unnecessary columns in the migration data,
+	  - Renamed and Reordered the columns to user friendly names, and
+	  - Generated new file in csv format.
       
    Code base [Jupyter Notebook - Migration Flows by County](https://github.com/hishamdewan/Migration_and_Housing/blob/main/cleaning_excel_file.ipynb).
 
 
 4. **Mortgage Rates** Data source [30 year Mortgage Rates](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/MORTGAGE30US.csv) was cleaned and merged with [House Price Index](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/USSTHPI.csv) were transformed and merged before using in the Machine Learning Model 2 - HPI vs Mortgage Rate
-   
+	- Convert data from both files to "Quarterly" timeline to use in the model.
+	
+   Code base [Jupyter Notebook - Mortgage Rates](https://github.com/Bhargavi-ng/Migration_and_Housing/blob/main/linear_regression_HPI_vs_30MORTGAGE.ipynb).
 
 5. **Current and Previous Residence** Data from [county-to-county-2015-2019-previous-residence-sort (Excel file)](/Resources/county-to-county-2015-2019-current-residence-sort.xlsx) was transformed as below and output file in CSV format [cleaned_2015_2019_current_previous_residence_data](Resources/cleaned_2015_2019_current_previous_residence_data.csv) was generated.
-  -  Cleaned data provided for each state in separate worksheet in the excel by iterating and doing the below
-     -  Condense four header rows into one header and remove the extra rows for all the sheets in the excel,
-     -  Remove unwanted columns, 
-     -  Remove footer notes rows in each sheet,
-     -  fill empty cells with '0', and 
-     -  replacing '-' for Foreign movers with 'NA', 
-  - Combined data from all states,
-  - Added additional rows and filled values by joining 2 columns, and
-  - Generated csv file.
-
+	  -  Cleaned data provided for each state in separate worksheet in the excel by iterating and doing the below
+	     -  Condense four header rows into one header and remove the extra rows for all the sheets in the excel,
+	     -  Remove unwanted columns, 
+	     -  Remove footer notes rows in each sheet,
+	     -  fill empty cells with '0', and 
+	     -  replacing '-' for Foreign movers with 'NA', 
+	  - Combined data from all states,
+	  - Added additional rows and filled values by joining 2 columns, and
+	  - Generated csv file.
+	Code base [Jupyter Notebook - Current and Previous Residence](https://github.com/Bhargavi-ng/Migration_and_Housing/blob/main/current_residence_county_CleanUp.ipynb).
 
 
 
@@ -117,11 +118,13 @@ We used AWS Relational Database to store the data needed for this model. A conne
 ***Training and Testing sets:***
 
 The dataset was split into training and testing sets for the model using SKlearn as shown below.
+
 ![HPI vs Migration splitting Datasets for Training and Testing](/Images/HPI_Migration_Split_Datasets.PNG)
 
 ***Model Quality:***
 
 This model has a mean squared error value of nearly zero (0.02), which represents a perfect model. We can say that the quality of the model is very good. 
+
 ![HPI vs Population Migration Model Quality Evaluation](/Images/HPI_Migration_Model_Quality.PNG)
 
 Code base [Jupyter Notebook - Linear Regression model regressing house price and migration](https://github.com/hishamdewan/Migration_and_Housing/blob/main/linear_regression_HPI_vs_pop.ipynb).
@@ -133,19 +136,23 @@ We used a second linear regression model that will regress "**All-Transactions H
 ***Findings:***
 
 The model supports our hypothesis that falling interest rate drives up the housing prices in U.S. as shown below. This model has a R squared value of 68.5% meaning that falling interest rates explains 68.5% of the Total Increase in House Prices. There are other factors influencing the remaining 31.5% of the Total Increase in House prices.
-![Linear Regression Plot HPI vs Mortage Rate](/Images/linear_regression_HPI_vs_MORTGAGE.png)
+
+![Linear Regression Plot HPI vs Mortage Rate](/Images/linear_regression_HPI_vs_MORTGAGE.PNG)
 
 ***Data used:***
+
 Data sources [30 year Mortgage Rates](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/MORTGAGE30US.csv) and [House Price Index](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/USSTHPI.csv) were transformed and merged before using in the model.
 
 ***Training and Testing sets:***
 
 We used SKlearn to split the above processed data into training and testing sets as shown below screenshot.
+
 ![HPI vs Mortgage splitting Datasets for Training and Testing](/Images/HPI_Mortgage_Split_Datasets.PNG)
 
 ***Model Quality:***
 
 This model has a mean squared error value of 3.64. A perfect model will have the value "0". 3.64 is relatively small and thus, we can conclude the quality of the model is relatively good. 
+
 ![HPI vs Mortgage Model Quality Evaluation](/Images/HPI_Mortgage_Model_Quality.PNG)
 
 Code base [Jupyter Notebook - Linear Regression model regressing House price and Mortgage rate](https://github.com/hishamdewan/Migration_and_Housing/blob/main/linear_regression_HPI_vs_30MORTGAGE.ipynb)
@@ -160,6 +167,7 @@ Code base [Jupyter Notebook - Neural Network Model House price and Mortgage rate
 PostgreSQL database in AWS RDS is used to store data used for this project. The static data from FHFA HPI for each county and population migration by county were data preprocessing and loaded into Postgres AWS database in AWS RDS. Those two data sources with merged in AWS using SQL and prepared to be consumed for various Machine Learning models.
 
 The following is a screenshot of the entity relations diagram (ERD) we used for the analysis:
+
 ![ERD DIAGRAM](/Images/RD.png)
 
 For the security purposes, sensitive information needed to connect to AWS RDS is saved on config.py file and called in following files to upload and download data.
@@ -169,9 +177,11 @@ For the security purposes, sensitive information needed to connect to AWS RDS is
 
 The following is a screenshot of MIGRATIONS_IN_OUTS_NETS_GROSS data table that stores processed
 County-to-County Migration Flows 2015-2019 ACS data in the database:
+
 ![MIGRATIONS_IN_OUTS_NETS_GROSS table](/Images/MIGRATION_IN_OUTS_NETS_GROSS_data_table.png)
 
 The following is a screenshot of HOUSE_PRICE data table that stores processed FHFA HPI for each county in the database:
+
 ![MIGRATIONS_IN_OUTS_NETS_GROSS table](/Images/HOUSE_PRICE_data_table.png)
 
 Below is the SQL used to join MIGRATIONS_IN_OUTS_NETS_GROSS and HOUSE_PRICE.
