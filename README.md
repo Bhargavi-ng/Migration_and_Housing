@@ -247,7 +247,7 @@ The group will communicate and keep each other posted using Slack channel for Gr
 - Square Role (GitHub): Hisham Dewan
 - Triangle Role (Machine Learning): Teruki Ito, Zhen Fung
 - Circle Role (Database): Shirley Liu, Merina Kansakar
-- X Role (Technology): Bhargavi Nagarajappa
+- X Role (Technology & Visualization): Bhargavi Nagarajappa
 
 ### Team Roles for Second Segement of the Project:
 - Square Role : Bhargavi Nagarajappa
@@ -256,7 +256,7 @@ The group will communicate and keep each other posted using Slack channel for Gr
 - X Role : Zhen Fung, Hisham Dewan
 
 ### Team Roles for Third Segement of the Project:
-- Square Role : 
-- Triangle Role : 
-- Circle Role : 
-- X Role : 
+- Square Role : Shirley Liu
+- Triangle Role : Hisham Dewan
+- Circle Role : Zhen Fung, Bhargavi Nagarajappa
+- X Role : Teruki Ito, Merina Kansakar
