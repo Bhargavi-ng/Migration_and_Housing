@@ -168,7 +168,7 @@ This model has a mean squared error value of 3.64. A perfect model will have the
 Code base [Jupyter Notebook - Linear Regression model regressing House price and Mortgage rate](https://github.com/hishamdewan/Migration_and_Housing/blob/main/linear_regression_HPI_vs_30MORTGAGE.ipynb)
 
 #### Neural Network Model
-As the above Model 2: House Price Index vs Mortgage Rates was a good model, we created a neural network model using to House Price Index and 30 year fixed Mortgage data to explore further. But, as we did not have sufficient quantity of data the model did not yield good results.
+As the above Model 2: House Price Index vs Mortgage Rates was a good model, we created a neural network model using to House Price Index and 30 year fixed Mortgage data to explore further. But, our dataset did not have sufficent quantity of data and thus this model wasn't able to yield any results.
 
 Code base [Jupyter Notebook - Neural Network Model House price and Mortgage rate](https://github.com/hishamdewan/Migration_and_Housing/blob/main/neural_network_HPI_vs_30MORTGAGE.ipynb)
 
@@ -178,7 +178,7 @@ PostgreSQL database in AWS RDS is used to store data used for this project. The 
 
 The following is a screenshot of the entity relations diagram (ERD) we used for the analysis:
 
-![ERD DIAGRAM](/Images/RD.png)
+![ERD DIAGRAM](https://github.com/Bhargavi-ng/Migration_and_Housing/blob/main/Images/ERD.png)
 
 For the security purposes, sensitive information needed to connect to AWS RDS is saved on config.py file and called in following files to upload and download data.
 * Migration_data_upload.ipynb
@@ -233,6 +233,20 @@ The interactive elements we used for creation of graphs and charts are
 - Population growth
 - Mortgage Rate of Interest
 
+A couple of visualizations we created are below.
+
+**Migration Flows - Net Migration for California:**
+
+The **migration flow out** of the state of California is shown in **Red** and **migration into** the state of California is shown in **Green**. As you can see in the image below that between 2015 to 2019 the top five states to which the Californians moved are Texas(34,571), Arizona(29,773), Nevada(24,180), Oregon(22,517) and Washington(17,220). Except for Texas, the remaining states are the neighboring states. Whereas, the top five states from were people moved to California are New York(11,592), Illinois(7,876), New Jersey(4,604), Massachusetts(3,301) and Pennsylvania(2,476)
+
+![Net Migration for California](/Images/Visual1_Net_Migration_California.PNG)
+
+**Ranking Net Migration - State level:**
+
+The **Blue** color means that the **Net Migration is Positive** (Incoming population > Outgoing populatiopn) and **Red** color means **Net Migration is Negative** (Incoming population < Outgoing population). We can see that there are five states with Positive Net Migration of 50,000 or more. They are Florida, Texas, Arizona, North Carolina and Washington. Similarly, there are four states with Negative Net Migration of 60,000 or more. They are New York, California, Illinois and New Jersey.
+
+![Ranking Net Migration - State level](/Images/Visual2_Ranking_Net_Migration_State_level.PNG)
+
 
 ### Presentation
 The outline for the presentation has been created as part of Segement2 Deliverable. Here is the [link](https://docs.google.com/presentation/d/1ZMPZ4rW7OaxI3ja43FWr-0ZHVNi6gMHT/edit#slide=id.p1)
@@ -243,12 +257,12 @@ TBD
 
 
 ## Communication Protocol
-The group will communicate and keep each other posted using Slack channel for Group 3 and Zoom. 
+The group communicated and kept each other posted using Slack channel for Group 3 and Zoom. 
 
 - Link to [Group 3's Slack Channel](https://ucbvirtdatapt-puq6469.slack.com/archives/C02RWJSSP53)
-- Link to Zoom is in the Slack channel. We will meet during class hours on Tuesday and Thursday 7pm PST.
-- Team members will work on 3 separate GitHub branches and inform the group of commits and progress of their work.
-- Once all members have completed their weekly task, the person with the "Square Role" (defined below) will merge the branches.  
+- Link to Zoom is in the Slack channel. We met during class hours on Tuesday and Thursday 7pm PST.
+- Team members worked on 3 separate GitHub branches and informed the group of commits and progress of their work.
+- Once all members completed their weekly task, the person with the "Square Role" (defined below) will merge the branches.  
 
 ## Tech Used and Team Roles
 - Data Clean up: Jupyter Notebook, Python, Pandas Library, Mito, SQLAlchemy
