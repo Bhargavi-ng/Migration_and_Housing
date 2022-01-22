@@ -90,7 +90,7 @@ The screenshot of a pivot table shows population change by state and county:
 
 
 ## Data Analysis / Machine Learning Models
-We are using two machine learning model for this analysis.
+We are using two machine learning model for this analysis. Both these models are using Linear regression because it is an exploratory tool that can be used to quantify and measure the variability of two correlated variables. Moreover, a good linear regression model can be used as a predictive modeling tool as in used to predict one variable using thr linear model and values of another variable.
 
 ### Model 1: House price and Migration
 A linear regression model that regresses percentage house price changes for counties in the US over 2015-19 against population change in those countries during the same period. The linear regression model tests the null hypothesis that population growth drives up real estate prices. The ML model takes data from the AWS Relational database. We will assess the quality of the model using R squared and other metrics. 
@@ -127,6 +127,12 @@ This model has a mean squared error value of nearly zero (0.02), which represent
 
 ![HPI vs Population Migration Model Quality Evaluation](/Images/HPI_Migration_Model_Quality.PNG)
 
+***Model Limitations:***
+	- This linear regression model only one independent variable - Population Migration with in U.S. Real estate prices have many other variables influencing it like population growth, housing unit growth, economic state of the country etc.
+	- We considered data for a smaller duration - 2015 to 2019 for this model.
+	- Also, the geographic spread is to big - all counties across U.S to be able to see any trends.	Limiting the data to high migration counties might have provided better output.
+	
+	
 Code base [Jupyter Notebook - Linear Regression model regressing house price and migration](https://github.com/hishamdewan/Migration_and_Housing/blob/main/linear_regression_HPI_vs_pop.ipynb).
 
 
@@ -155,10 +161,14 @@ This model has a mean squared error value of 3.64. A perfect model will have the
 
 ![HPI vs Mortgage Model Quality Evaluation](/Images/HPI_Mortgage_Model_Quality.PNG)
 
+***Model Limitations:***
+	- This linear regression model only one independent variable - 30 year fixed Mortgage rates. As seen in the above to models, Real estate prices have many other variables influencing it.
+	- We considered data for a longer duration over bigger geographic spread. As in, Interest rate over the past 40 years versus House Price Index change across all of U.S.
+	
 Code base [Jupyter Notebook - Linear Regression model regressing House price and Mortgage rate](https://github.com/hishamdewan/Migration_and_Housing/blob/main/linear_regression_HPI_vs_30MORTGAGE.ipynb)
 
 #### Neural Network Model
-We tried to create a neural network model using House Price Index and 30 year fixed Mortgage data. But, as we did not have sufficient quantity of data the model did not yield good results.
+As the above Model 2: House Price Index vs Mortgage Rates was a good model, we created a neural network model using to House Price Index and 30 year fixed Mortgage data to explore further. But, as we did not have sufficient quantity of data the model did not yield good results.
 
 Code base [Jupyter Notebook - Neural Network Model House price and Mortgage rate](https://github.com/hishamdewan/Migration_and_Housing/blob/main/neural_network_HPI_vs_30MORTGAGE.ipynb)
 
