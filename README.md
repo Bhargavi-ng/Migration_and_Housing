@@ -90,7 +90,7 @@ The screenshot of a pivot table shows population change by state and county:
 
 
 ## Data Analysis / Machine Learning Models
-We are using two machine learning model for this analysis. Both these models are using Linear regression because it is an exploratory tool that can be used to quantify and measure the variability of two correlated variables. Moreover, a good linear regression model can be used as a predictive modeling tool as in used to predict one variable using thr linear model and values of another variable.
+We are using two machine learning model for this analysis. Both these models are using Linear regression because it is an exploratory tool that can be used to quantify and measure the variability of two correlated variables. Moreover, a good linear regression model can be used as a predictive modeling tool as in used to predict one variable using the linear model and values of another variable.
 
 ### Model 1: House price and Migration
 A linear regression model that regresses percentage house price changes for counties in the US over 2015-19 against population change in those countries during the same period. The linear regression model tests the null hypothesis that population growth drives up real estate prices. The ML model takes data from the AWS Relational database. We will assess the quality of the model using R squared and other metrics. 
@@ -117,7 +117,7 @@ We used AWS Relational Database to store the data needed for this model. A conne
 
 ***Training and Testing sets:***
 
-The dataset was split into training and testing sets for the model using SKlearn as shown below.
+The dataset was split into training and testing sets for the model using sklearn as shown below.
 
 ![HPI vs Migration splitting Datasets for Training and Testing](/Images/HPI_Migration_Split_Datasets.PNG)
 
@@ -130,7 +130,7 @@ This model has a mean squared error value of nearly zero (0.02), which represent
 ***Model Limitations:***
 	- This linear regression model only one independent variable - Population Migration with in U.S. Real estate prices have many other variables influencing it like population growth, housing unit growth, economic state of the country etc.
 	- We considered data for a smaller duration - 2015 to 2019 for this model.
-	- Also, the geographic spread is to big - all counties across U.S to be able to see any trends.	Limiting the data to high migration counties might have provided better output.
+	- Also, the geographic spread is too big - all counties across U.S to be able to see any trends.	Limiting the data to high migration counties might have provided better output.
 	
 	
 Code base [Jupyter Notebook - Linear Regression model regressing house price and migration](https://github.com/hishamdewan/Migration_and_Housing/blob/main/linear_regression_HPI_vs_pop.ipynb).
@@ -174,7 +174,7 @@ Code base [Jupyter Notebook - Neural Network Model House price and Mortgage rate
 
 
 ## Database
-PostgreSQL database in AWS RDS is used to store data used for this project. The static data from FHFA HPI for each county and population migration by county were data preprocessing and loaded into Postgres AWS database in AWS RDS. Those two data sources with merged in AWS using SQL and prepared to be consumed for various Machine Learning models.
+PostgreSQL database in AWS RDS is used to store data used for this project. The static data from FHFA HPI for each county and population migration by county data were preprocessed and loaded into Postgres AWS database in AWS RDS. Those two data sources with merged in AWS using SQL and prepared to be consumed for various Machine Learning models.
 
 The following is a screenshot of the entity relations diagram (ERD) we used for the analysis:
 
@@ -243,7 +243,7 @@ The **migration flow out** of the state of California is shown in **Red** and **
 
 **Ranking Net Migration - State level:**
 
-The **Blue** color means that the **Net Migration is Positive** (Incoming population > Outgoing populatiopn) and **Red** color means **Net Migration is Negative** (Incoming population < Outgoing population). We can see that there are five states with Positive Net Migration of 50,000 or more. They are Florida, Texas, Arizona, North Carolina and Washington. Similarly, there are four states with Negative Net Migration of 60,000 or more. They are New York, California, Illinois and New Jersey.
+The **Blue** color means that the **Net Migration is Positive** (Incoming population > Outgoing populatiopn) and **Red** color means **Net Migration is Negative** (Incoming population < Outgoing population). We can see that there are five states with Positive Net Migration of 50,000 or more. They are Florida, Texas, Arizona, North Carolina and Washington. Similarly, there are four states with Negative Net Migration of 50,000 or more. They are New York, California, Illinois and New Jersey.
 
 ![Ranking Net Migration - State level](/Images/Visual2_Ranking_Net_Migration_State_level.PNG)
 
