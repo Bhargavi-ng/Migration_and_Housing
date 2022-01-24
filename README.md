@@ -35,7 +35,7 @@ We mentioned above in the data description section above, we had data in various
 1. **House Price Index** Data from [House Price Index for all counties (Excel file)](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/GeoFRED_All-Transactions_House_Price_Index_by_County_Index.xlsx) was transformed as below and output file in CSV format [Cleaned data - House Price Index for all counties](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/house_price_df.csv) was generated.
 
    - Removed unnecessary columns for house prices between 1975-1999,
-   - Created columns for population change and real estate price change, and
+   - Created a column real estate price change over 2015-2019 for all counties in the CSV file. The column was created in order to run a linear regression model regressing House Price Index of counties against net migration change in those counties during the same period, and
    - Exported a CSV file with cleaned house price data.
 
    Code base [Jupyter Notebook - House Price Index Data Clean Up](https://github.com/hishamdewan/Migration_and_Housing/blob/main/House_Price.ipynb).
@@ -45,13 +45,14 @@ The following is screenshot show a list of states that had counties that saw >40
 ![States_with_counties_with_highest_price_increase](Images/States_with_counties_with_highest_price_increase.png)
 
 
-2. **Migration** Data from [County-to-County Migration Flows 2015-2019 ACS data (Text file)](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/Net_Gross_US.txt) was transformed as below and output file in CSV format [Cleaned data - County Level Migration as % of total population](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/county_level_migration_15-19.csv) was generated.
+2. **Migration** Data from [County-to-County Migration Flows 2015-2019 ACS data (Text file)](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/Net_Gross_US.txt) was transformed as below and the following output file in CSV format [Cleaned data - County Level Migration as % of total population](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/county_level_migration_15-19.csv) was generated.
     
    - Removed unnecessary columns in the migration data,
-   - Renamed columns to user friendly names,
+   - Renamed columns to user friendly names and prepared the data for uploading to a relational database,
    - Reordered the columns,
    - Cleaned values in column "State Name of Geography A",
-   - Created pivot table showing population change (i.e. number of people migrating and as % of total population), and
+   - Created pivot table showing population change (i.e. number of people migrating and as % of total population), 
+   - Created a column showing population change driven by migration over 2015-2019 for all counties. The column was created in order to run a linear regression model regressing House Price Index of counties against net migration change in those countries during the same period, and
    - Created two CSV files: one for ML model and the other to store in the database.
   
    Code base [Jupyter Notebook - Migration Flows Data Clean Up](https://github.com/hishamdewan/Migration_and_Housing/blob/main/population_change.ipynb).
@@ -61,10 +62,10 @@ The screenshot of a pivot table shows population change by state and county:
 ![pivot_table_migration_by_state_county](Images/pivot_table_migration_by_state_county.png)
     
 
-3. **Net Migration** Data from [County-to-County Migration Flows 2015-2019 Ins-Outs-Nets-Gross (Excel file)](\Resources\cleaned-county-to-county-2015-2019-ins-outs-nets-gross.xlsx) was transformed as below and output file in CSV format [Cleaned data - County Level Migration by number of people and source county](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/cleaned-county-to-county-2015-2019-ins-outs-nets-gross.csv) was generated.
+3. **Net Migration** Data from [County-to-County Migration Flows 2015-2019 Ins-Outs-Nets-Gross (Excel file)](https://github.com/Bhargavi-ng/Migration_and_Housing/blob/main/Resources/cleaned-county-to-county-2015-2019-ins-outs-nets-gross.xlsx ) was transformed as below and output file in CSV format [Cleaned data - County Level Migration by number of people and source county](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/cleaned-county-to-county-2015-2019-ins-outs-nets-gross.csv) was generated.
   
 	  - Removed unnecessary columns in the migration data,
-	  - Renamed and Reordered the columns to user friendly names, and
+	  - Renamed and reordered the columns to user friendly names, and
 	  - Generated new file in csv format.
       
    Code base [Jupyter Notebook - Migration Flows by County](https://github.com/hishamdewan/Migration_and_Housing/blob/main/cleaning_excel_file.ipynb).
@@ -73,15 +74,15 @@ The screenshot of a pivot table shows population change by state and county:
 4. **Mortgage Rates** Data source [30 year Mortgage Rates](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/MORTGAGE30US.csv) was cleaned and merged with [House Price Index](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/USSTHPI.csv) were transformed and merged before using in the Machine Learning Model 2 - HPI vs Mortgage Rate
 	- Convert data from both files to "Quarterly" timeline to use in the model.
 	
-   Code base [Jupyter Notebook - Mortgage Rates](https://github.com/Bhargavi-ng/Migration_and_Housing/blob/main/linear_regression_HPI_vs_30MORTGAGE.ipynb).
+   Code base [Jupyter Notebook - Linear Regression vs Mortgage Rates](https://github.com/Bhargavi-ng/Migration_and_Housing/blob/main/linear_regression_HPI_vs_30MORTGAGE.ipynb).
 
 5. **Current and Previous Residence** Data from [county-to-county-2015-2019-previous-residence-sort (Excel file)](/Resources/county-to-county-2015-2019-current-residence-sort.xlsx) was transformed as below and output file in CSV format [cleaned_2015_2019_current_previous_residence_data](Resources/cleaned_2015_2019_current_previous_residence_data.csv) was generated.
 	  -  Cleaned data provided for each state in separate worksheet in the excel by iterating and doing the below
-	     -  Condense four header rows into one header and remove the extra rows for all the sheets in the excel,
-	     -  Remove unwanted columns, 
-	     -  Remove footer notes rows in each sheet,
-	     -  fill empty cells with '0', and 
-	     -  replacing '-' for Foreign movers with 'NA', 
+	     -  Converted multiple header rows into one header row and removed the extra rows across all the worksheets,
+	     -  Removed unwanted columns, 
+	     -  Removed footer notes rows in each worksheet,
+	     -  Filled empty cells with '0', and 
+	     -  Replaced '-' for Foreign movers with 'NA', 
 	  - Combined data from all states,
 	  - Added additional rows and filled values by joining 2 columns, and
 	  - Generated csv file.
@@ -90,14 +91,14 @@ The screenshot of a pivot table shows population change by state and county:
 
 
 ## Data Analysis / Machine Learning Models
-We are using two machine learning model for this analysis. Both these models are using Linear regression because it is an exploratory tool that can be used to quantify and measure the variability of two correlated variables. Moreover, a good linear regression model can be used as a predictive modeling tool as in used to predict one variable using the linear model and values of another variable.
+We are using two machine learning model for this analysis. Both these models are using Linear regression because it is an exploratory tool that can be used to quantify and measure the variability of two correlated variables. Moreover, linear regression model can be used as a predictive tool used to predict one variable using values of another variable.
 
 ### Model 1: House price and Migration
 A linear regression model that regresses percentage house price changes for counties in the US over 2015-19 against population change in those countries during the same period. The linear regression model tests the null hypothesis that population growth drives up real estate prices. The ML model takes data from the AWS Relational database. We will assess the quality of the model using R squared and other metrics. 
 
 ***Findings:***
 
-The model does not support our null hypothesis, as in the migration of population within U.S. did not drive up the Real Estate Prices as shown in the below screenshot. The R squared value for this model is 2.13% meaning this model explains only 2% of the Total Price Increase in the Housing Real Estate. Thus, based on this model our Null hypothesis is rejected.
+The model does not support our null hypothesis. The migration of population within U.S. was not a material driver of Housing prices as shown in the below screenshot. The R squared value for this model was ~ 2.7% meaning this model explains only 2.7% of the housing price change over 2015-2019. Thus, based on this model the null hypothesis is rejected.
 
 ![Linear Regression Plot HPI vs Migration](/Images/Linear_Regression_HPI_vs_Migration.png)
 
@@ -117,7 +118,7 @@ We used AWS Relational Database to store the data needed for this model. A conne
 
 ***Training and Testing sets:***
 
-The dataset was split into training and testing sets for the model using sklearn as shown below.
+The dataset was split into training and testing sets for the model using SKlearn as shown below.
 
 ![HPI vs Migration splitting Datasets for Training and Testing](/Images/HPI_Migration_Split_Datasets.PNG)
 
@@ -128,20 +129,20 @@ This model has a mean squared error value of nearly zero (0.02), which represent
 ![HPI vs Population Migration Model Quality Evaluation](/Images/HPI_Migration_Model_Quality.PNG)
 
 ***Model Limitations:***
-	- This linear regression model only one independent variable - Population Migration with in U.S. Real estate prices have many other variables influencing it like population growth, housing unit growth, economic state of the country etc.
+	- This linear regression model only one independent variable - Population Migration with in U.S. Real estate prices have many other variables influencing it like population growth, housing unit growth, economic state of the country, etc.
 	- We considered data for a smaller duration - 2015 to 2019 for this model.
-	- Also, the geographic spread is too big - all counties across U.S to be able to see any trends.	Limiting the data to high migration counties might have provided better output.
+	- Also, the geography could potentially be too large: - all counties across U.S. Limiting the data to high migration counties might have provided better output.
 	
 	
 Code base [Jupyter Notebook - Linear Regression model regressing house price and migration](https://github.com/hishamdewan/Migration_and_Housing/blob/main/linear_regression_HPI_vs_pop.ipynb).
 
 
 ### **Model 2: House Price Index and 30 year Fixed Mortagage Rates**
-We used a second linear regression model that will regress "**All-Transactions House Price Index for the United States**" on "**30-Year Fixed Rate Mortgage Average in the United States**" between 2000-2021. This model tests the hypothesis that falling interest rates drives up housing prices in the U.S. We assessed the quality of the model using R squared and other metrics. 
+We used a second linear regression model that will regress "**All-Transactions House Price Index for the United States**" on "**30-Year Fixed Rate Mortgage Average in the United States**" between 1975-2021. This model tests the hypothesis that the interest rates drove housing prices in the U.S. We assessed the quality of the model using R squared and other metrics. 
 
 ***Findings:***
 
-The model supports our hypothesis that falling interest rate drives up the housing prices in U.S. as shown below. This model has a R squared value of 68.5% meaning that falling interest rates explains 68.5% of the Total Increase in House Prices. There are other factors influencing the remaining 31.5% of the Total Increase in House prices.
+The model supports our hypothesis that change in interest rate drives housing prices in U.S. as shown below. This model has a R squared value of 68.5% meaning that falling interest rates explains 68.5% of the change in house prices. There are other factors influencing the remaining of the change in house prices.
 
 ![Linear Regression Plot HPI vs Mortage Rate](/Images/linear_regression_HPI_vs_MORTGAGE.PNG)
 
@@ -162,28 +163,28 @@ This model has a mean squared error value of 3.64. A perfect model will have the
 ![HPI vs Mortgage Model Quality Evaluation](/Images/HPI_Mortgage_Model_Quality.PNG)
 
 ***Model Limitations:***
-	- This linear regression model only one independent variable - 30 year fixed Mortgage rates. As seen in the above to models, Real estate prices have many other variables influencing it.
+	- This linear regression model only one independent variable - 30 year fixed Mortgage rates. As discussed earlier, real estate prices have many other variables influencing it.
 	- We considered data for a longer duration over bigger geographic spread. As in, Interest rate over the past 40 years versus House Price Index change across all of U.S.
 	
 Code base [Jupyter Notebook - Linear Regression model regressing House price and Mortgage rate](https://github.com/hishamdewan/Migration_and_Housing/blob/main/linear_regression_HPI_vs_30MORTGAGE.ipynb)
 
 #### Neural Network Model
-As the above Model 2: House Price Index vs Mortgage Rates was a good model, we created a neural network model using to House Price Index and 30 year fixed Mortgage data to explore further. But, our dataset did not have sufficent quantity of data and thus this model wasn't able to yield any results.
+As the above Model 2: House Price Index vs Mortgage Rates was a good model, we created a neural network model using to House Price Index and 30 year fixed Mortgage data to explore the relationship further. But, we did not have sufficient data for the neural network model and thus this model wasn't able to yield meaningful results.
 
 Code base [Jupyter Notebook - Neural Network Model House price and Mortgage rate](https://github.com/hishamdewan/Migration_and_Housing/blob/main/neural_network_HPI_vs_30MORTGAGE.ipynb)
 
 
 ## Database
-PostgreSQL database in AWS RDS is used to store data used for this project. The static data from FHFA HPI for each county and population migration by county data were preprocessed and loaded into Postgres AWS database in AWS RDS. Those two data sources with merged in AWS using SQL and prepared to be consumed for various Machine Learning models.
+PostgreSQL database in AWS RDS is used to store data used for this project. The static data from FHFA HPI for each county and population migration by county data were preprocessed and loaded into Postgres database in AWS RDS. Those two data sources with merged in AWS using SQL and prepared to be consumed for Machine Learning model.
 
 The following is a screenshot of the entity relations diagram (ERD) we used for the analysis:
 
 ![ERD DIAGRAM](https://github.com/Bhargavi-ng/Migration_and_Housing/blob/main/Images/ERD.png)
 
 For the security purposes, sensitive information needed to connect to AWS RDS is saved on config.py file and called in following files to upload and download data.
-* Migration_data_upload.ipynb
-* loading_house_price_data_to_RDS.ipynb
-* linear_regression_HPI_vs_pop.ipynb
+* [Migration_data_upload.ipynb](https://github.com/Bhargavi-ng/Migration_and_Housing/blob/main/Migration_data_upload.ipynb)
+* [loading_house_price_data_to_RDS.ipynb](https://github.com/Bhargavi-ng/Migration_and_Housing/blob/main/loading_house_price_data_to_RDS.ipynb)
+* [linear_regression_HPI_vs_pop.ipynb](https://github.com/Bhargavi-ng/Migration_and_Housing/blob/main/linear_regression_HPI_vs_pop.ipynb)
 
 The following is a screenshot of MIGRATIONS_IN_OUTS_NETS_GROSS data table that stores processed
 County-to-County Migration Flows 2015-2019 ACS data in the database:
@@ -194,7 +195,7 @@ The following is a screenshot of HOUSE_PRICE data table that stores processed FH
 
 ![MIGRATIONS_IN_OUTS_NETS_GROSS table](/Images/HOUSE_PRICE_data_table.png)
 
-Below is the SQL used to join MIGRATIONS_IN_OUTS_NETS_GROSS and HOUSE_PRICE.
+Below is the SQL query used to join MIGRATIONS_IN_OUTS_NETS_GROSS and HOUSE_PRICE.
 ```
 SELECT
 	 B.state_name_of_geography_a,
@@ -231,19 +232,19 @@ The interactive elements we used for creation of graphs and charts are
   - State level
 - House Price Index
 - Population growth
-- Mortgage Rate of Interest
+- Mortgage Interest Rate
 
-A couple of visualizations we created are below.
+Screenshots of visualizations we created are given below.
 
 **Migration Flows - Net Migration for California:**
 
-The **migration flow out** of the state of California is shown in **Red** and **migration into** the state of California is shown in **Green**. As you can see in the image below that between 2015 to 2019 the top five states to which the Californians moved are Texas(34,571), Arizona(29,773), Nevada(24,180), Oregon(22,517) and Washington(17,220). Except for Texas, the remaining states are the neighboring states. Whereas, the top five states from were people moved to California are New York(11,592), Illinois(7,876), New Jersey(4,604), Massachusetts(3,301) and Pennsylvania(2,476)
+The **migration flow out** of the state of California is shown in **Red** and **migration into** the state of California is shown in **Green**. As you can see in the image below that between 2015 to 2019 the top five states to which the Californians moved to are Texas(34,571), Arizona(29,773), Nevada(24,180), Oregon(22,517) and Washington(17,220). Except for Texas, the remaining states are the neighboring states. Whereas, the top five states from were people moved to California are New York(11,592), Illinois(7,876), New Jersey(4,604), Massachusetts(3,301) and Pennsylvania(2,476)
 
 ![Net Migration for California](/Images/Visual1_Net_Migration_California.PNG)
 
 **Ranking Net Migration - State level:**
 
-The **Blue** color means that the **Net Migration is Positive** (Incoming population > Outgoing populatiopn) and **Red** color means **Net Migration is Negative** (Incoming population < Outgoing population). We can see that there are five states with Positive Net Migration of 50,000 or more. They are Florida, Texas, Arizona, North Carolina and Washington. Similarly, there are four states with Negative Net Migration of 50,000 or more. They are New York, California, Illinois and New Jersey.
+The **Blue** color means that the **Net Migration is Positive** (Incoming population > Outgoing population) and **Red** color means **Net Migration is Negative** (Incoming population < Outgoing population). We can see that there are five states with Positive Net Migration of 50,000 or more. They are Florida, Texas, Arizona, North Carolina and Washington. Similarly, there are four states with Negative Net Migration of 50,000 or more. They are New York, California, Illinois and New Jersey.
 
 ![Ranking Net Migration - State level](/Images/Visual2_Ranking_Net_Migration_State_level.PNG)
 
@@ -267,9 +268,11 @@ The group communicated and kept each other posted using Slack channel for Group 
 ## Tech Used and Team Roles
 - Data Clean up: Jupyter Notebook, Python, Pandas Library, Mito, SQLAlchemy
 - Database: PostgresSQL, Amazon Relational Database Service
-- Data Visualization: Tableau
+- Machine Learning: SKlearn (Linear Regression, train_test_split, mean_squared_error, r2_score, etc.) 
+- Data Visualization: Tableau, Plotly, Matplotlib
 
 ### Team Members
+Contributor are listed [here](https://github.com/Bhargavi-ng/Migration_and_Housing/graphs/contributors)
 1. Hisham Dewan
 2. Shirley Liu
 3. Zhen Fung
