@@ -254,7 +254,7 @@ The outline for the presentation has been created as part of Segement2 Deliverab
 
 
 ## Recommendations for Future Analysis
-TBD
+TB
 
 ## Communication Protocol
 The group communicated and kept each other posted using Slack channel for Group 3 and Zoom. 
