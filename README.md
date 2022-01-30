@@ -17,6 +17,12 @@ We think population migration has wide ranging implications for the U.S populati
 	- The raw data is in this [CSV file](Resources/MORTGAGE30US.csv)
 - "All-Transactions House Price Index for the United States" from Federal Housing Finance Agency (FHFA) is a broad measure of the movement of single-family house prices in the US. [All-Transactions House Price Index for the United States](https://fred.stlouisfed.org/series/USSTHPI)
 	- 	The raw data is in this [CSV file](Resources/USSTHPI.csv)
+- "Zillow Home Value Index (HVI)" is a smoothed, seasonally adjusted measure of the typical home value and market changes across a given region and housing type. 
+[Zillow Home Value Index (HVI)](https://www.zillow.com/research/data/)
+   - The raw data is in this [csv file](Resources/Zillow_Home_Value_Index_(ZHVI)_Metro_All_Homes_monthly.csv)
+- "Zillow For-Sale Inventory" represents the count of unique listings that were active at any time in a given month [Zillow Home Value Index (HVI)](https://www.zillow.com/research/data/)
+   - The raw data is in this [csv file](Resources/Zillow_Inventory_Metro_All_Homes_monthly.csv)
+
 
 ### Questions we hope to answer with the data
 - What areas are people leaving and where are they going?
@@ -88,6 +94,16 @@ The screenshot of a pivot table shows population change by state and county:
 	  - Generated csv file.
 	Code base [Jupyter Notebook - Current and Previous Residence](https://github.com/Bhargavi-ng/Migration_and_Housing/blob/main/current_residence_county_CleanUp.ipynb).
 
+6. **Zillow House Price Index and House Inventory** Data from [Zillow Inventory Metro All Homes Monthly (csv file)](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources\Zillow_Home_Value_Index_(ZHVI)_Metro_All_Homes_monthly.csv) was transformed as below and the following output file in CSV format [Cleaned data - Zillow HVI Inventory](https://github.com/hishamdewan/Migration_and_Housing/blob/main/Resources/Zillow_HVI_.csv) was generated.
+    
+   - Removed unnecessary columns
+   - Renamed columns to user friendly names and prepared the data for merging 
+   - reset the index to Date 
+   - transpose the rows into columns for merging the two dataframes into one dataframe
+   
+  
+   Code base [Jupyter Notebook - Zillow House Price Index Cleanup](https://github.com/Bhargavi-ng/Migration_and_Housing/blob/ML_Segment3/linear_regression_ZHPI_vs_inventory.ipynb).
+
 
 
 ## Data Analysis / Machine Learning Models
@@ -142,7 +158,7 @@ We used a second linear regression model that will regress "**All-Transactions H
 
 ***Findings:***
 
-The model supports our hypothesis that change in interest rate drives housing prices in U.S. as shown below. This model has a R squared value of 68.5% meaning that falling interest rates explains 68.5% of the change in house prices. There are other factors influencing the remaining of the change in house prices.
+The model supports our hypothesis that change in interest rate drives housing prices in U.S. as shown below. This model has a R squared value of 0.682 meaning that falling interest rates explains 68.2% of the change in house prices. There are other factors influencing the remaining of the change in house prices.
 
 ![Linear Regression Plot HPI vs Mortage Rate](/Images/linear_regression_HPI_vs_MORTGAGE1.PNG)
 
@@ -172,6 +188,33 @@ Code base [Jupyter Notebook - Linear Regression model regressing House price and
 As the above Model 2: House Price Index vs Mortgage Rates was a good model, we created a neural network model using to House Price Index and 30 year fixed Mortgage data to explore the relationship further. But, we did not have sufficient data for the neural network model and thus this model wasn't able to yield meaningful results.
 
 Code base [Jupyter Notebook - Neural Network Model House price and Mortgage rate](https://github.com/hishamdewan/Migration_and_Housing/blob/main/neural_network_HPI_vs_30MORTGAGE.ipynb)
+
+The following is a screenshot of the accuracy performance of our Neural Network Model: 
+![Neural Network Model Accuracy](https://github.com/Bhargavi-ng/Migration_and_Housing/blob/main/Images/neural_network_model_accuracy.png) 
+
+### **Model 3: Linear Regression of Zillow House Price Index on Housing Inventory in the US**
+We used a third linear regression model that will regress "**Zillow House Value Index**" on "**Zillow For Sale Housing Inventory**" between 2018-2021. This model tests the hypothesis that the housing inventory can drive housing prices in the U.S. We assessed the quality of the model using R squared and other metrics. 
+
+***Findings:***
+
+The model supports our hypothesis that housing inventory drives housing prices in U.S. as shown below. This model has a R squared value of 0.681 meaning that housing inventory explains 68.1% of the change in house prices. This is in addition to the other factors influencing the remaining of the change in house prices.
+
+![Linear Regression Plot ZHVI vs Housing Inventory](/Images/linear_regression_ZHVI_vs_Inventory.png)
+
+***Data used:***
+
+Data sources [Zillow Home Value Index (HVI)](https://github.com/Bhargavi-ng/Migration_and_Housing/Resources/Zillow_Home_Value_Index_(ZHVI)_Metro_All_Homes_monthly.csv) and [Zillow For-Sale Inventory](https://github.com/Bhargavi-ng/Migration_and_Housing/Resources/Zillow_Inventory_Metro_All_Homes_monthly.csv) were transformed and merged before using in the model.
+
+
+***Model Quality:***
+
+![ZHVI vs Inventory Model Quality Evaluation](/Images/ZHVI_vs_Inventory_Model_Quality.png)
+
+***Model Limitations:***
+	- This linear regression model only has one independent variable - Housing Inventory. As discussed earlier, real estate prices have many other variables influencing it.
+	- The dataset for this model is limited because the duration of the data is only from 2018-2021. Zillow didn't have long term series data for housing inventory. 
+	
+Code base [Jupyter Notebook - Linear Regression model regressing House price and Housing Inventory](https://github.com/hishamdewan/Migration_and_Housing/blob/main/linear_regression_ZHPI_vs_inventory.ipynb)
 
 
 ## Database
@@ -254,16 +297,8 @@ The outline for the presentation has been created as part of Segement2 Deliverab
 
 
 ## Recommendations for Future Analysis
-TBD
+For this project, to keep our scope small we considered only one driver/variable at a time for the analysis. We can improve this by looking at other variables like how we used Mortgage Rates when Population Migration did not answer our questions. Some of the variables we can take into account are - wealth and income, construction activity, and housing unit growth. Additionally, we can look at multiple variables at the same time using multiple linear regression models or neural network models. 
 
-
-## Communication Protocol
-The group communicated and kept each other posted using Slack channel for Group 3 and Zoom. 
-
-- Link to [Group 3's Slack Channel](https://ucbvirtdatapt-puq6469.slack.com/archives/C02RWJSSP53)
-- Link to Zoom is in the Slack channel. We met during class hours on Tuesday and Thursday 7pm PST.
-- Team members worked on 3 separate GitHub branches and informed the group of commits and progress of their work.
-- Once all members completed their weekly task, the person with the "Square Role" (defined below) will merge the branches.  
 
 ## Tech Used and Team Roles
 - Data Clean up: Jupyter Notebook, Python, Pandas Library, Mito, SQLAlchemy
