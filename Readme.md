@@ -1,4 +1,53 @@
 # Impact of Migration on Housing Prices
+## Project Outline
+1. Introduction to the Project
+   - Selected Topic and the Underlying reason
+   - Description of the source of data
+   - Questions we hope to answer with the data
+2. Data Exploration - Extract raw data , transform it as needed and save cleaned data in csv format
+   - Exploring and Tranforming House Price Index data
+   - Exploring and Transforming Population Migration data
+   - Tranforming and merging two datasets to get Net Migration data
+   - Transforming Mortgage Rates and House Price Index datasets to same time(Quaterly) denominator for ML
+   - Transformed Current and Previous Residence Data to create visualizations
+   - Transformed Zillow House Value Index and Housing Inventory datasets for ML
+3. Data Analysis - Creation od Machine Learning Models
+   - Model 1: House price and Migration
+   	- Findings from Model 1
+   	- Data sources used for Model 1
+   	- Integration to AWS-RDS database via Postgres
+   	- Creation of Training and Testing datasets
+   	- Evaluation of the Model Quality
+   	- Limitations of the Model 1
+   	- Link to the Jupyter Notebook - Model 1
+   - Model 2: House Price Index and 30 year Fixed Mortgage Rates
+   	- Findings from Model 2
+   	- Data sources used for Model 2
+   	- Creation of Training and Testing datasets
+   	- Evaluation of the Model Quality
+   	- Limitations of the Model 2
+   	- Link to the Jupyter Notebook - Model 2
+   	- Creation of Neural Network Model
+   	- Link to the Jupyter Notebook - Neural Network Model
+   - Model 3: House Value Index and Housing Inventory
+   	- Findings from Model 3
+   	- Data sources used for Model 3
+   	- Evaluation of the Model Quality
+   	- Limitations of the Model 3
+   	- Link to the Jupyter Notebook - Model 3
+4. Database Integration for Model 1
+    - Created Entity Relationship Diagram
+    - Created AWS RDS Instance and linked it Postgres
+    - Created DB interface with the ML model 1
+    - Created JOIN to merge datasets
+5. Dashboard
+   - Link to Tableau Workbook to view the graphs, Dashboards and Story
+   - List of Interactive Elements used in Tableau Workbook
+   - Visualization examples
+   - Link to Google Presentation
+   - Link to Speaker Notes document
+6. Recommendations for Future Analysis
+
 ## Selected Topic
 Purposes of the project is to gauge the impact of in-country population migration in the U.S. on house prices. In addition, we will identify population migration patterns in the U.S. using various visualizations. We will also look for factors other than migration that could impact housing prices in the U.S. General hypothesis is that population growth drives up real estate prices (and vice versa). 
 
