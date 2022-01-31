@@ -4,14 +4,14 @@
    - Selected Topic and the Underlying reason
    - Description of the source of data
    - Questions we hope to answer with the data
-2. Data Exploration - Extract raw data , transform it as needed and save cleaned data in csv format
+2. [Data Exploration](#data-exploration) - Extract raw data , transform it as needed and save cleaned data in csv format
    - Exploring and Tranforming House Price Index data
    - Exploring and Transforming Population Migration data
    - Tranforming and merging two datasets to get Net Migration data
    - Transforming Mortgage Rates and House Price Index datasets to same time(Quaterly) denominator for ML
    - Transformed Current and Previous Residence Data to create visualizations
    - Transformed Zillow House Value Index and Housing Inventory datasets for ML
-3. Data Analysis - Creation od Machine Learning Models
+3. [Data Analysis](#data-analysis-and-creation-of-machine-learning-models) - Creation od Machine Learning Models
    - Model 1: House price and Migration
 		- Findings from Model 1
 		- Data sources used for Model 1
@@ -35,18 +35,18 @@
 		- Evaluation of the Model Quality
 		- Limitations of the Model 3
 		- Link to the Jupyter Notebook - Model 3
-4. Database Integration for Model 1
+4. [Database Integration for Model 1](#database)
     - Created Entity Relationship Diagram
     - Created AWS RDS Instance and linked it Postgres
     - Created DB interface with the ML model 1
     - Created JOIN to merge datasets
-5. Dashboard
+5. [Dashboard](#dashboard)
    - Link to Tableau Workbook to view the graphs, Dashboards and Story
    - List of Interactive Elements used in Tableau Workbook
    - Visualization examples
    - Link to Google Presentation
    - Link to Speaker Notes document
-6. Recommendations for Future Analysis
+6. [Recommendations for Future Analysis](#recommendations-for-future-analysis)
 
 ## Introduction to the Project
 ### Selected Topic
@@ -156,7 +156,7 @@ The screenshot of a pivot table shows population change by state and county:
 
 
 
-## Data Analysis / Machine Learning Models
+## Data Analysis and creation of Machine Learning Models
 We are using two machine learning model for this analysis. Both these models are using Linear regression because it is an exploratory tool that can be used to quantify and measure the variability of two correlated variables. Moreover, linear regression model can be used as a predictive tool used to predict one variable using values of another variable.
 
 ### Model 1: House price and Migration
