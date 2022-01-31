@@ -1,6 +1,6 @@
 # Impact of Migration on Housing Prices
 ## Project Outline
-1. Introduction to the Project
+1. [Introduction to the Project](#introduction-to-the-project)
    - Selected Topic and the Underlying reason
    - Description of the source of data
    - Questions we hope to answer with the data
@@ -48,7 +48,8 @@
    - Link to Speaker Notes document
 6. Recommendations for Future Analysis
 
-## Selected Topic
+## Introduction to the Project
+### Selected Topic
 Purposes of the project is to gauge the impact of in-country population migration in the U.S. on house prices. In addition, we will identify population migration patterns in the U.S. using various visualizations. We will also look for factors other than migration that could impact housing prices in the U.S. General hypothesis is that population growth drives up real estate prices (and vice versa). 
 
 ### Underlying reason
