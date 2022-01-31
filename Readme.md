@@ -160,7 +160,7 @@ We used a second linear regression model that will regress "**All-Transactions H
 
 The model supports our hypothesis that change in interest rate drives housing prices in U.S. as shown below. This model has a R squared value of 0.682 meaning that falling interest rates explains 68.2% of the change in house prices. There are other factors influencing the remaining of the change in house prices.
 
-![Linear Regression Plot HPI vs Mortage Rate](/Images/linear_regression_HPI_vs_MORTGAGE1.PNG)
+![Linear Regression Plot HPI vs Mortage Rate](/Images/linear_regression_HPI_vs_MORTGAGE.png)
 
 ***Data used:***
 
@@ -199,7 +199,7 @@ We used a third linear regression model that will regress "**Zillow House Value 
 
 The model supports our hypothesis that housing inventory drives housing prices in U.S. as shown below. This model has a R squared value of 0.681 meaning that housing inventory explains 68.1% of the change in house prices. This is in addition to the other factors influencing the remaining of the change in house prices.
 
-![Linear Regression Plot ZHVI vs Housing Inventory](/Images/linear_regression_ZHVI_vs_Inventory.png)
+![Linear Regression Plot ZHVI vs Housing Inventory](/Images/linear_regression_ZHVI_vs_Inventory.PNG)
 
 ***Data used:***
 
