@@ -295,6 +295,9 @@ The **Blue** color means that the **Net Migration is Positive** (Incoming popula
 ### Presentation
 The outline for the presentation has been created as part of Segement2 Deliverable. Here is the [link](https://docs.google.com/presentation/d/1ZMPZ4rW7OaxI3ja43FWr-0ZHVNi6gMHT/edit#slide=id.p1)
 
+### Speaker Notes
+The link to document with speaker notes can be found [here](https://docs.google.com/document/d/1EwQFBvosfMiQ6xSrpvW4Zg9VOj4eTRjYihngX7ESDzs/edit#)
+
 
 ## Recommendations for Future Analysis
 For this project, to keep our scope small we considered only one driver/variable at a time for the analysis. We can improve this by looking at other variables like how we used Mortgage Rates when Population Migration did not answer our questions. Some of the variables we can take into account are - wealth and income, construction activity, and housing unit growth. Additionally, we can look at multiple variables at the same time using multiple linear regression models or neural network models. 
