@@ -13,28 +13,28 @@
    - Transformed Zillow House Value Index and Housing Inventory datasets for ML
 3. Data Analysis - Creation od Machine Learning Models
    - Model 1: House price and Migration
-   	- Findings from Model 1
-   	- Data sources used for Model 1
-   	- Integration to AWS-RDS database via Postgres
-   	- Creation of Training and Testing datasets
-   	- Evaluation of the Model Quality
-   	- Limitations of the Model 1
-   	- Link to the Jupyter Notebook - Model 1
+		- Findings from Model 1
+		- Data sources used for Model 1
+		- Integration to AWS-RDS database via Postgres
+		- Creation of Training and Testing datasets
+		- Evaluation of the Model Quality
+		- Limitations of the Model 1
+		- Link to the Jupyter Notebook - Model 1
    - Model 2: House Price Index and 30 year Fixed Mortgage Rates
-   	- Findings from Model 2
-   	- Data sources used for Model 2
-   	- Creation of Training and Testing datasets
-   	- Evaluation of the Model Quality
-   	- Limitations of the Model 2
-   	- Link to the Jupyter Notebook - Model 2
-   	- Creation of Neural Network Model
-   	- Link to the Jupyter Notebook - Neural Network Model
+		- Findings from Model 2
+		- Data sources used for Model 2
+		- Creation of Training and Testing datasets
+		- Evaluation of the Model Quality
+		- Limitations of the Model 2
+		- Link to the Jupyter Notebook - Model 2
+		- Creation of Neural Network Model
+		- Link to the Jupyter Notebook - Neural Network Model
    - Model 3: House Value Index and Housing Inventory
-   	- Findings from Model 3
-   	- Data sources used for Model 3
-   	- Evaluation of the Model Quality
-   	- Limitations of the Model 3
-   	- Link to the Jupyter Notebook - Model 3
+		- Findings from Model 3
+		- Data sources used for Model 3
+		- Evaluation of the Model Quality
+		- Limitations of the Model 3
+		- Link to the Jupyter Notebook - Model 3
 4. Database Integration for Model 1
     - Created Entity Relationship Diagram
     - Created AWS RDS Instance and linked it Postgres
