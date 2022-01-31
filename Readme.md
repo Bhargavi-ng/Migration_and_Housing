@@ -53,7 +53,11 @@
 Purposes of the project is to gauge the impact of in-country population migration in the U.S. on house prices. In addition, we will identify population migration patterns in the U.S. using various visualizations. We will also look for factors other than migration that could impact housing prices in the U.S. General hypothesis is that population growth drives up real estate prices (and vice versa). 
 
 ### Underlying reason
-We think population migration has wide ranging implications for the U.S population including economic, political, demographic and societal impact. Population migration could impact economic growth, cost of living, real estate prices, transportation, congressional redistricting, government budgets, demographic makeup, etc. In this analysis, we will show population migration patterns in the U.S. and how that has impacted housing prices. We will also look for factors other than migration that could impact housing prices in the U.S. 
+We think population migration has wide ranging implications for the U.S population including economic, political, demographic and societal impact. Population migration could impact economic growth, cost of living, real estate prices, transportation, congressional redistricting, government budgets, demographic makeup, etc. In this analysis, we will show population migration patterns in the U.S. and how that has impacted housing prices. We will also look for factors other than migration that could impact housing prices in the U.S. We think drivers of residential real estate prices are broadly categorized into three groups:
+	- Housing demand drivers: Population growth, GDP growth, population income and wealth
+	- Housing supply : For sale inventory, housing production, housing unit growth
+	- Capital market factors: Mortgage interest rate, stock prices
+There are many other factors that could impact residential real estate prices but we will only test a handful of individual factors in this analysis.
 
 ### Description of the source of data
 
@@ -224,12 +228,10 @@ We used SKlearn to split the above processed data into training and testing sets
 
 ***Model Quality:***
 
-This model has a mean squared error value of 3.64. A perfect model will have the value "0". 3.64 is relatively small and thus, we can conclude the quality of the model is relatively good. 
-
 ![HPI vs Mortgage Model Quality Evaluation](/Images/HPI_Mortgage_Model_Quality.PNG)
 
 ***Model Limitations:***
-	- This linear regression model only one independent variable - 30 year fixed Mortgage rates. As discussed earlier, real estate prices have many other variables influencing it.
+	- We have taken into account only one independent variable (Mortgage rates) in this model. As discussed earlier, real estate prices have many other variables influencing it.
 	- We considered data for a longer duration over bigger geographic spread. As in, Interest rate over the past 40 years versus House Price Index change across all of U.S.
 	
 Code base [Jupyter Notebook - Linear Regression model regressing House price and Mortgage rate](https://github.com/hishamdewan/Migration_and_Housing/blob/main/linear_regression_HPI_vs_30MORTGAGE.ipynb)
