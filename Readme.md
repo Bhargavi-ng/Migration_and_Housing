@@ -11,7 +11,7 @@
    - Transforming Mortgage Rates and House Price Index datasets to same time(Quaterly) denominator for ML
    - Transformed Current and Previous Residence Data to create visualizations
    - Transformed Zillow House Value Index and Housing Inventory datasets for ML
-3. [Data Analysis](#data-analysis-and-creation-of-machine-learning-models) - Creation od Machine Learning Models
+3. [Data Analysis](#data-analysis-and-creation-of-machine-learning-models) - Creation of Machine Learning Models
    - Model 1: House price and Migration
 		- Findings from Model 1
 		- Data sources used for Model 1
@@ -50,7 +50,7 @@
 
 ## Introduction to the Project
 ### Selected Topic
-Purposes of the project is to gauge the impact of in-country population migration in the U.S. on house prices. In addition, we will identify population migration patterns in the U.S. using various visualizations. We will also look for factors other than migration that could impact housing prices in the U.S. General hypothesis is that population growth drives up real estate prices (and vice versa). 
+The purpose of this project is to gauge the impact of in-country population migration in the U.S. on house prices. In addition, we will identify population migration patterns in the U.S. using various visualizations. We will also look for factors other than migration that could impact housing prices in the U.S. Our hypothesis is that population growth drives up real estate prices (and vice versa). 
 
 ### Underlying reason
 We think population migration has wide ranging implications for the U.S population including economic, political, demographic and societal impact. Population migration could impact economic growth, cost of living, real estate prices, transportation, congressional redistricting, government budgets, demographic makeup, etc. In this analysis, we will show population migration patterns in the U.S. and how that has impacted housing prices. We will also look for factors other than migration that could impact housing prices in the U.S. We think drivers of residential real estate prices are broadly categorized into three groups:
@@ -81,7 +81,7 @@ There are many other factors that could impact residential real estate prices bu
 ### Questions we hope to answer with the data
 - What areas are people leaving and where are they going?
 - What is the scale of migration over time?
-- Which counties saw highest and lowest % increase and decrease in migration? 
+- Which counties saw the highest and lowest % increase and decrease in migration? 
 - When people move, are they staying in their current state or go to a different state?
 - What is the impact of population change on residential real estate prices?
 - How could you use population migration data and real estate prices to make home buying decision or planning your next move?
@@ -100,7 +100,7 @@ We mentioned above in the data description section above, we had data in various
 
    Code base [Jupyter Notebook - House Price Index Data Clean Up](https://github.com/hishamdewan/Migration_and_Housing/blob/main/House_Price.ipynb).
 
-The following is screenshot show a list of states that had counties that saw >40% housing price (i.e. HPI) increase over 2015-19.
+The following screenshot shows a list of states that had counties with >40% housing price (i.e. HPI) increase over 2015-19.
 
 ![States_with_counties_with_highest_price_increase](Images/States_with_counties_with_highest_price_increase.png)
 
@@ -117,7 +117,7 @@ The following is screenshot show a list of states that had counties that saw >40
   
    Code base [Jupyter Notebook - Migration Flows Data Clean Up](https://github.com/hishamdewan/Migration_and_Housing/blob/main/population_change.ipynb).
 
-The screenshot of a pivot table shows population change by state and county:
+The pivot table below shows population change by state and county:
 
 ![pivot_table_migration_by_state_county](Images/pivot_table_migration_by_state_county.png)
     
@@ -161,14 +161,14 @@ The screenshot of a pivot table shows population change by state and county:
 
 
 ## Data Analysis and creation of Machine Learning Models
-We are using two machine learning model for this analysis. Both these models are using Linear regression because it is an exploratory tool that can be used to quantify and measure the variability of two correlated variables. Moreover, linear regression model can be used as a predictive tool used to predict one variable using values of another variable.
+We are using two machine learning model for this analysis. Both models use linear regression because it can be used to quantify and measure the variability of two correlated variables. Moreover, a linear regression model can be used to predict one variable using values of another variable.
 
 ### Model 1: House price and Migration
-A linear regression model that regresses percentage house price changes for counties in the US over 2015-19 against population change in those countries during the same period. The linear regression model tests the null hypothesis that population growth drives up real estate prices. The ML model takes data from the AWS Relational database. We will assess the quality of the model using R squared and other metrics. 
+We created a linear regression model that regresses percentage house price changes for counties in the US over 2015-19 against population change in those countries during the same period. The linear regression model tests the hypothesis that population growth drives up real estate prices. The ML model takes data from the AWS Relational database. We will assess the quality of the model using R squared and other metrics. 
 
 ***Findings:***
 
-The model does not support our null hypothesis. The migration of population within U.S. was not a material driver of Housing prices as shown in the below screenshot. The R squared value for this model was ~ 2.7% meaning this model explains only 2.7% of the housing price change over 2015-2019. Thus, based on this model the null hypothesis is rejected.
+The model does not support our hypothesis. The migration of population within U.S. was not a material driver of Housing prices as shown in the below screenshot. The R squared value for this model was ~ 2.7% meaning this model explains only 2.7% of the housing price change over 2015-2019. Thus, based on this model the hypothesis is rejected.
 
 ![Linear Regression Plot HPI vs Migration](/Images/Linear_Regression_HPI_vs_Migration.png)
 
@@ -199,7 +199,7 @@ This model has a mean squared error value of nearly zero (0.02), which represent
 ![HPI vs Population Migration Model Quality Evaluation](/Images/HPI_Migration_Model_Quality.PNG)
 
 ***Model Limitations:***
-	- This linear regression model only one independent variable - Population Migration with in U.S. Real estate prices have many other variables influencing it like population growth, housing unit growth, economic state of the country, etc.
+	- This linear regression model had only one independent variable - Population Migration with in U.S. Real estate prices have many other variables influencing it like population growth, housing unit growth, economic state of the country, etc.
 	- We considered data for a smaller duration - 2015 to 2019 for this model.
 	- Also, the geography could potentially be too large: - all counties across U.S. Limiting the data to high migration counties might have provided better output.
 	
