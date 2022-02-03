@@ -1,52 +1,26 @@
 # Impact of Migration on Housing Prices
 ## Project Outline
-1. [Introduction to the Project](#introduction-to-the-project)
-   - Selected Topic and the Underlying reason
-   - Description of the source of data
-   - Questions we hope to answer with the data
-2. [Data Exploration](#data-exploration) - Extract raw data , transform it as needed and save cleaned data in csv format
-   - Exploring and Tranforming House Price Index data
-   - Exploring and Transforming Population Migration data
-   - Tranforming and merging two datasets to get Net Migration data
-   - Transforming Mortgage Rates and House Price Index datasets to same time(Quaterly) denominator for ML
-   - Transformed Current and Previous Residence Data to create visualizations
-   - Transformed Zillow House Value Index and Housing Inventory datasets for ML
-3. [Data Analysis](#data-analysis-and-creation-of-machine-learning-models) - Creation of Machine Learning Models
-   - Model 1: House price and Migration
-		- Findings from Model 1
-		- Data sources used for Model 1
-		- Integration to AWS-RDS database via Postgres
-		- Creation of Training and Testing datasets
-		- Evaluation of the Model Quality
-		- Limitations of the Model 1
-		- Link to the Jupyter Notebook - Model 1
-   - Model 2: House Price Index and 30 year Fixed Mortgage Rates
-		- Findings from Model 2
-		- Data sources used for Model 2
-		- Creation of Training and Testing datasets
-		- Evaluation of the Model Quality
-		- Limitations of the Model 2
-		- Link to the Jupyter Notebook - Model 2
-		- Creation of Neural Network Model
-		- Link to the Jupyter Notebook - Neural Network Model
-   - Model 3: House Value Index and Housing Inventory
-		- Findings from Model 3
-		- Data sources used for Model 3
-		- Evaluation of the Model Quality
-		- Limitations of the Model 3
-		- Link to the Jupyter Notebook - Model 3
-4. [Database Integration for Model 1](#database)
-    - Created Entity Relationship Diagram
-    - Created AWS RDS Instance and linked it Postgres
-    - Created DB interface with the ML model 1
-    - Created JOIN to merge datasets
-5. [Dashboard](#dashboard)
-   - Link to Tableau Workbook to view the graphs, Dashboards and Story
-   - List of Interactive Elements used in Tableau Workbook
-   - Visualization examples
-   - Link to Google Presentation
-   - Link to Speaker Notes document
-6. [Recommendations for Future Analysis](#recommendations-for-future-analysis)
+- [Impact of Migration on Housing Prices](#impact-of-migration-on-housing-prices)
+  - [Project Outline](#project-outline)
+  - [Introduction to the Project](#introduction-to-the-project)
+    - [Selected Topic](#selected-topic)
+    - [Underlying reason](#underlying-reason)
+    - [Description of the source of data](#description-of-the-source-of-data)
+    - [Questions we hope to answer with the data](#questions-we-hope-to-answer-with-the-data)
+  - [Data Exploration](#data-exploration)
+  - [Data Analysis and creation of Machine Learning Models](#data-analysis-and-creation-of-machine-learning-models)
+    - [Model 1: House price and Migration](#model-1-house-price-and-migration)
+    - [**Model 2: House Price Index and 30 year Fixed Mortagage Rates**](#model-2-house-price-index-and-30-year-fixed-mortagage-rates)
+      - [Neural Network Model](#neural-network-model)
+    - [**Model 3: Linear Regression of Zillow House Price Index on Housing Inventory in the US**](#model-3-linear-regression-of-zillow-house-price-index-on-housing-inventory-in-the-us)
+  - [Database](#database)
+  - [Dashboard](#dashboard)
+    - [Presentation](#presentation)
+    - [Speaker Notes](#speaker-notes)
+  - [Conclusion](#conclusion)
+  - [Recommendations for Future Analysis](#recommendations-for-future-analysis)
+  - [Techology Used](#techology-used)
+  - [Team Members](#team-members)
 
 ## Introduction to the Project
 ### Selected Topic
@@ -230,6 +204,8 @@ We used SKlearn to split the above processed data into training and testing sets
 
 ![HPI vs Mortgage Model Quality Evaluation](/Images/HPI_Mortgage_Model_Quality.PNG)
 
+This model has a mean squared error value. This is because we did not scale the dataset as it was very small and overfit the model.
+
 ***Model Limitations:***
 	- We have taken into account only one independent variable (Mortgage rates) in this model. As discussed earlier, real estate prices have many other variables influencing it.
 	- We considered data for a longer duration over bigger geographic spread. As in, Interest rate over the past 40 years versus House Price Index change across all of U.S.
@@ -261,6 +237,8 @@ Data sources [Zillow Home Value Index (HVI)](https://github.com/Bhargavi-ng/Migr
 ***Model Quality:***
 
 ![ZHVI vs Inventory Model Quality Evaluation](/Images/ZHVI_vs_Inventory_Model_Quality.png)
+
+This model has a very high mean squared error value. This is because we did not reshape the datasets as they were in a fairly clean format.
 
 ***Model Limitations:***
 	- This linear regression model only has one independent variable - Housing Inventory. As discussed earlier, real estate prices have many other variables influencing it.
@@ -351,17 +329,21 @@ The outline for the presentation has been created as part of Segement2 Deliverab
 The link to document with speaker notes can be found [here](https://docs.google.com/document/d/1EwQFBvosfMiQ6xSrpvW4Zg9VOj4eTRjYihngX7ESDzs/edit#)
 
 
+## Conclusion
+If you are deciding on purchasing residential real estate for either personal or for investment, we recommend that you should focus on supply side drivers such as inventory and capital market driver like Interest rate than demand driver like migration based on our analysis above.
+
+
 ## Recommendations for Future Analysis
 For this project, to keep our scope small we considered only one driver/variable at a time for the analysis. We can improve this by looking at other variables like how we used Mortgage Rates when Population Migration did not answer our questions. Some of the variables we can take into account are - wealth and income, construction activity, and housing unit growth. Additionally, we can look at multiple variables at the same time using multiple linear regression models or neural network models. 
 
 
-## Tech Used and Team Roles
+## Techology Used 
 - Data Clean up: Jupyter Notebook, Python, Pandas Library, Mito, SQLAlchemy
 - Database: PostgresSQL, Amazon Relational Database Service
 - Machine Learning: SKlearn (Linear Regression, train_test_split, mean_squared_error, r2_score, etc.) 
 - Data Visualization: Tableau, Plotly, Matplotlib
 
-### Team Members
+## Team Members
 Contributor are listed [here](https://github.com/Bhargavi-ng/Migration_and_Housing/graphs/contributors)
 1. Hisham Dewan
 2. Shirley Liu
@@ -369,21 +351,3 @@ Contributor are listed [here](https://github.com/Bhargavi-ng/Migration_and_Housi
 4. Bhargavi Nagarajappa
 5. Teruki Ito
 6. Merina Kansakar
-
-### Team Roles for First Segement of the Project:
-- Square Role (GitHub): Hisham Dewan
-- Triangle Role (Machine Learning): Teruki Ito, Zhen Fung
-- Circle Role (Database): Shirley Liu, Merina Kansakar
-- X Role (Technology & Visualization): Bhargavi Nagarajappa
-
-### Team Roles for Second Segement of the Project:
-- Square Role : Bhargavi Nagarajappa
-- Triangle Role : Shirley Liu, Hisham Dewan
-- Circle Role : Teruki Ito, Merina Kansakar
-- X Role : Zhen Fung, Hisham Dewan
-
-### Team Roles for Third Segement of the Project:
-- Square Role : Shirley Liu
-- Triangle Role : Hisham Dewan
-- Circle Role : Zhen Fung, Bhargavi Nagarajappa
-- X Role : Teruki Ito, Merina Kansakar
